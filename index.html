@@ -4,11 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/styles/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>WeatherWeb</title>
 </head>
 <body>
+    <header>
+        <div class="searchCityWeather">
+            <span class="material-symbols-outlined">search</span>
+            <input type="text" placeholder="Ingrese una ciudad" name="searchCity" id="searchCity">
+        </div>
+        <div class="toggleDarkLight" id="toggleDarkLight">
+            <button>
+                <span class="material-symbols-outlined">
+                    light_mode
+                </span>
+            </button>
+            <button>
+                <span class="material-symbols-outlined">
+                    dark_mode
+                </span>
+            </button>
+        </div>
+    </header>
     <main>
-        <h1>Weather App</h1>
+        <section id="cityDayContainer" class="cityDayContainer">
+            <div id="cityInformationContainer" class="cityInformation">
+                <span class="material-symbols-outlined">
+                    location_on
+                </span>
+                <h5>San Salvador, El Salvador</h5>
+            </div>
+            <div id="dateContainer" class="dateInformation">
+                <p>Domingo, 01 de febrero de 2026</p>
+            </div>
+        </section>
+        <section id="currentWeatherContainer" class="currentWeatherInfo">
+            <div id="temperatureUnitContainer">
+                <button>
+                    <span class="material-symbols-outlined">
+                        more_horiz
+                    </span>
+                </button>
+                <!-- Este div debe de aparecer al dar click en el botón de mas opciones, como dropdown -->
+                <ul id="temperatureUnitOptionsContainer">
+                    <li>
+                        <input type="radio" name="celsius" id="celsius" value="celsius" checked>
+                        <label for="celsius">Celsius (°C)</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="fahrenheit" id="fahrenheit" value="fahrenheit">
+                        <label for="fahrenheit">Fahrenheit (°F)</label>
+                    </li>
+                </ul>
+            </div>
+            <div id="temperatureContainer">
+                <img src="src/assets/sunny.png" alt="Clima">
+                <h2>17 °C</h2>
+            </div>
+            <div id="weatherConditionContainer">
+                <h5>Sunny</h5>
+                <p>Sensación térmica: 16°C</p>
+            </div>
+        </section>
+        <section id="weatherDetailsContaier">
+            <div id="humidityContainer">
+                <span class="material-symbols-outlined">
+                humidity_low
+                </span>
+                <p>41%</p>
+                <p>Húmedad</p>
+            </div>
+            <div id="windContainer">
+                <span class="material-symbols-outlined">
+                air
+                </span>
+                <p>11.5 kp/h</p>
+                <p>Viento</p>
+            </div>
+            <div id="precipitationContainer">
+                <span class="material-symbols-outlined">
+                rainy
+                </span>
+                <p>0%</p>
+                <p>Precipitaciones</p>
+            </div>
+        </section>
+        <section id="forecastContainer">
+            <div id="forecastCard" class="forecastCard">
+                <h5>Lunes</h5>
+                <!-- Podría ser, no estoy segura -->
+                <hr style="width: 5rem; margin: 0;"> 
+                <img src="src/assets/sunny.png" alt="clima">
+                <p>26°/12°</p>
+            </div>
+        </section>
+        
     </main>
     <script src="main.js"></script>
 </body>
