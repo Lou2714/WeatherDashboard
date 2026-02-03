@@ -9,22 +9,20 @@
     <title>WeatherWeb</title>
 </head>
 <body>
-    <header>
+    <header class="">
         <div class="searchCityWeather">
-            <span class="material-symbols-outlined">search</span>
-            <input type="text" placeholder="Ingrese una ciudad" name="searchCity" id="searchCity">
+            <span class="searchBarIcon material-symbols-outlined">search</span>
+            <input type="text" class="searchBarInput" placeholder="Ingrese una ciudad" name="searchCity" id="searchCity">
         </div>
         <div class="toggleDarkLight" id="toggleDarkLight">
-            <button>
-                <span class="material-symbols-outlined">
-                    light_mode
+            <label class="toggleThemeLabel">
+                <input type="checkbox" id="theme" class="toggle" role="switch">
+                <span class="slider round">
+                    <!-- <span class="icon material-symbols-outlined">
+                        light_mode
+                    </span> -->
                 </span>
-            </button>
-            <button>
-                <span class="material-symbols-outlined">
-                    dark_mode
-                </span>
-            </button>
+            </label>
         </div>
     </header>
     <main>

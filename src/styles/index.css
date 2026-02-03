@@ -2,6 +2,7 @@
 :root {
     --bg-color: #F2F1F0;
     --principal-color: #034C8C;
+    --bg-color-effect: #dfeeff;
     --font-family: "PT Sans Narrow", sans-serif;
 }
 * {
@@ -13,4 +14,114 @@
 body{
     background-color: var(--bg-color);
     font-family: var(--font-family);
+    padding: 1rem;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.searchCityWeather{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem 0;
+    width: 15rem;
+    height: 2rem;
+    border-radius: 10px;
+    border: 2px solid var(--bg-color-effect);
+    background-color: var(--bg-color-effect);
+}
+.searchCityWeather:focus-within{
+    border: 2px solid var(--principal-color);
+    color: var(--principal-color);
+}
+.searchBarIcon{
+    padding: 0.2rem 0.2rem;
+    text-align: center;
+}
+.searchBarInput{
+    border: none;
+    border-radius: 10px;
+    background-color: var(--bg-color-effect);
+    width: 100%;
+}
+.searchBarInput:focus{
+    /* Para que no se ilumine con ese color por defecto que tiene al dar click en el */
+    outline: none;
+}
+/*Toggle para cambiar el tema
+Fuente: https://www.w3schools.com/howto/howto_css_switch.asp
+https://medium.com/@anushka.war21/create-a-theme-toggle-button-in-html-4a2fc1fc9a2a
+https://alvaromontoro.com/blog/68017/creating-a-css-only-toggle-switch
+*/
+.toggleThemeLabel{
+    position: relative;
+    display: inline-block;
+    width: 4.5em;
+    height: 2.2em;
+}
+.toggle{
+    /*Oculta por defecto el checkbox html*/
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-color-effect);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider::before {
+    position: absolute;
+    /*Dado que Material Symbols es una fuente, texto de los span funciona en content*/
+    content: "light_mode";
+    font-family: "Material Symbols Outlined";
+    /*Especificando los colores y tamañanos del icono del contenido, el light mode*/
+    color: var(--bg-color-effect);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 1.7rem;
+    width: 1.7rem;
+    left: 0.3rem;
+    bottom: 0.3rem;
+    background-color: var(--principal-color);
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.toggle:checked + .slider {
+    background-color: #474F59;
+}
+
+.toggle:focus + .slider {
+    box-shadow: 0 0 1px #474F59;
+}
+
+.toggle:checked + .slider::before {
+    -webkit-transform: translateX(2.2rem);
+    -ms-transform: translateX(2.2rem);
+    transform: translateX(2.2rem);
+    background-color: #AEB5BF;
+    content: "dark_mode";
+    color: #1F2226;
+}
+/* Rounded sliders */
+.slider.round {
+    border-radius: 1rem;
+}
+
+.slider.round::before {
+    border-radius: 50%;
 }
