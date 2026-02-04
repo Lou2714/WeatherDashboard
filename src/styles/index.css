@@ -3,6 +3,8 @@
     --bg-color: #F2F1F0;
     --principal-color: #034C8C;
     --bg-color-effect: #dfeeff;
+    --border-color: #b8dfff;
+    --bg-color-subtle: #f0f7ff;
     --font-family: "PT Sans Narrow", sans-serif;
 }
 * {
@@ -10,17 +12,17 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body{
     background-color: var(--bg-color);
     font-family: var(--font-family);
-    padding: 1rem;
+    /* padding: 1rem; */
 }
 header{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    padding:1.5rem;
 }
 .searchCityWeather{
     display: flex;
@@ -79,7 +81,6 @@ https://alvaromontoro.com/blog/68017/creating-a-css-only-toggle-switch
     -webkit-transition: .4s;
     transition: .4s;
 }
-
 .slider::before {
     position: absolute;
     /*Dado que Material Symbols es una fuente, texto de los span funciona en content*/
@@ -100,15 +101,15 @@ https://alvaromontoro.com/blog/68017/creating-a-css-only-toggle-switch
     -webkit-transition: .4s;
     transition: .4s;
 }
-
+/*Se puede leer como: Cuando el checkbox .toggle está marcado,
+estiliza el .slider que viene inmediatamente después*/
 .toggle:checked + .slider {
     background-color: #474F59;
 }
-
+/*El + es el selector de hermano adyacente. Se Selecciona el .slider que está justo después del checkbox*/
 .toggle:focus + .slider {
     box-shadow: 0 0 1px #474F59;
 }
-
 .toggle:checked + .slider::before {
     -webkit-transform: translateX(2.2rem);
     -ms-transform: translateX(2.2rem);
@@ -121,7 +122,105 @@ https://alvaromontoro.com/blog/68017/creating-a-css-only-toggle-switch
 .slider.round {
     border-radius: 1rem;
 }
-
 .slider.round::before {
     border-radius: 50%;
+}
+/*Contenedor de la fecha y lugar*/
+.cityDayContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cityInformation{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    gap: 0.2rem;
+}
+/*Card de current weather*/
+.currentWeatherCard{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 22rem;
+    background-color: var(--bg-color-effect);
+    border-radius: 1rem;
+    /* box-shadow:  0 4px 8px 1px rgba(0, 0, 0, 0.2); */
+}
+.currentWeatherInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    padding: 1rem;
+}
+/*Boton de accion para mostrar las opciones de unidades para la temperatura*/
+.btnShowTemperatureUnitsOptions{
+    position: relative;
+    left: 8rem;
+    top: 1rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    width: 2rem;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    background-color: var(--bg-color-effect);
+    color: var(--principal-color);
+    border: none;
+}
+.btnShowTemperatureUnitsOptions:active{
+    background-color: var(--principal-color);
+    color: var(--bg-color-effect);
+}
+.temperatureUnitOptionsContainer{
+    display: none;
+    position: absolute;
+    top: 2.2rem;        /* ajusta según tu botón */
+    right: 2.5rem;
+    padding: 1rem;
+    background-color: var(--bg-color-subtle);
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+}
+.showTemperatureUnitOptionsContainer{
+    display: block;
+}
+/*Informacion de la temperatura*/
+.temperatureContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.weatherConditionContainer{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+}
+/*Detalles del clima*/
+.weatherDetailsContaier{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.weatherDetailCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    background-color: var(--bg-color-subtle);
+    border: 1px solid var(--border-color);
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.material-symbols-outlined.conditionIcon {
+    font-size: 2rem;
 }

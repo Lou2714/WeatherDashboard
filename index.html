@@ -28,7 +28,7 @@
     <main>
         <section id="cityDayContainer" class="cityDayContainer">
             <div id="cityInformationContainer" class="cityInformation">
-                <span class="material-symbols-outlined">
+                <span class="icon material-symbols-outlined">
                     location_on
                 </span>
                 <h5>San Salvador, El Salvador</h5>
@@ -37,56 +37,57 @@
                 <p>Domingo, 01 de febrero de 2026</p>
             </div>
         </section>
-        <section id="currentWeatherContainer" class="currentWeatherInfo">
-            <div id="temperatureUnitContainer">
-                <button>
+        <section id="currentWeatherContainer" class="currentWeatherCard">
+            <button id="btnShowTemperatureUnitsOptions" class="btnShowTemperatureUnitsOptions">
                     <span class="material-symbols-outlined">
                         more_horiz
                     </span>
-                </button>
-                <!-- Este div debe de aparecer al dar click en el botón de mas opciones, como dropdown -->
-                <ul id="temperatureUnitOptionsContainer">
-                    <li>
-                        <input type="radio" name="celsius" id="celsius" value="celsius" checked>
+            </button>
+            <!-- Este div debe de aparecer al dar click en el botón de mas opciones, como dropdown -->
+                <div id="temperatureUnitOptionsContainer" class="temperatureUnitOptionsContainer">
+                    <p>Unidades de temperatura</p>
+                    <div class="unitOption">
+                        <input type="radio" name="temperatureUnit" id="celsius" value="celsius" checked>
                         <label for="celsius">Celsius (°C)</label>
-                    </li>
-                    <li>
-                        <input type="radio" name="fahrenheit" id="fahrenheit" value="fahrenheit">
+                    </div>
+                    <div class="unitOption">
+                        <input type="radio" name="temperatureUnit" id="fahrenheit" value="fahrenheit">
                         <label for="fahrenheit">Fahrenheit (°F)</label>
-                    </li>
-                </ul>
+                    </div>
+                </div>
+            <div class="currentWeatherInfo">
+                <div id="temperatureContainer" class="temperatureContainer">
+                    <img src="src/assets/sunny.png" alt="Clima">
+                    <h2>17 °C</h2>
+                </div>
+                <div id="weatherConditionContainer" class="weatherConditionContainer">
+                    <h5>Sunny</h5>
+                    <p>Sensación térmica: 16°C</p>
+                </div>
             </div>
-            <div id="temperatureContainer">
-                <img src="src/assets/sunny.png" alt="Clima">
-                <h2>17 °C</h2>
-            </div>
-            <div id="weatherConditionContainer">
-                <h5>Sunny</h5>
-                <p>Sensación térmica: 16°C</p>
-            </div>
-        </section>
-        <section id="weatherDetailsContaier">
-            <div id="humidityContainer">
-                <span class="material-symbols-outlined">
-                humidity_low
-                </span>
-                <p>41%</p>
-                <p>Húmedad</p>
-            </div>
-            <div id="windContainer">
-                <span class="material-symbols-outlined">
-                air
-                </span>
-                <p>11.5 kp/h</p>
-                <p>Viento</p>
-            </div>
-            <div id="precipitationContainer">
-                <span class="material-symbols-outlined">
-                rainy
-                </span>
-                <p>0%</p>
-                <p>Precipitaciones</p>
-            </div>
+            <section id="weatherDetailsContaier" class="weatherDetailsContaier">
+                <div id="humidityContainer" class="weatherDetailCard">
+                    <span class="material-symbols-outlined conditionIcon">
+                    humidity_low
+                    </span>
+                    <span>41%</span>
+                    <span>Húmedad</span>
+                </div>
+                <div id="windContainer" class="weatherDetailCard">
+                    <span class="conditionIcon material-symbols-outlined">
+                    air
+                    </span>
+                    <span>11.5 kp/h</span>
+                    <span>Viento</span>
+                </div>
+                <div id="precipitationContainer" class="weatherDetailCard">
+                    <span class="conditionIcon material-symbols-outlined">
+                    rainy
+                    </span>
+                    <span>0%</span>
+                    <span>Precipitaciones</span>
+                </div>
+            </section>
         </section>
         <section id="forecastContainer">
             <div id="forecastCard" class="forecastCard">
