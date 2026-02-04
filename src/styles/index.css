@@ -130,6 +130,7 @@ estiliza el .slider que viene inmediatamente después*/
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 1rem 0;
 }
 .cityInformation{
     display: flex;
@@ -223,4 +224,31 @@ estiliza el .slider que viene inmediatamente después*/
 
 .material-symbols-outlined.conditionIcon {
     font-size: 2rem;
+}
+/*Forecast card container*/
+.forecastContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin: 1.5rem 0; 
+}
+.forecastCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+/*Cuando seleccione el dia se deberá añadir esta clase*/
+.forecastCardSelected{
+    background-color: var(--bg-color-effect);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.19);
+}
+.line{
+    width: 5rem; 
+    margin: 0;
 }
