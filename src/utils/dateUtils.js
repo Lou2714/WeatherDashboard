@@ -8,3 +8,9 @@ export const getCurrentDate = () =>{
     };
     return date.toLocaleDateString("es-ES", options);
 }
+
+export const getDayFromADate = (dateString) =>{
+    //Creando un objeto date a partir de un string
+    const date = new Date(dateString);
+
+}

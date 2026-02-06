@@ -19,3 +19,6 @@ const createForecastCard = (forecastDay) =>{
 }
 
 //Pendiente función para renderizar las forecastCards
+export const renderForecastInformation = (forecast) =>{
+
+}

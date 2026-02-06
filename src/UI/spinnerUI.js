@@ -1,21 +1,23 @@
 const createSpinner = () =>{
     const spinnerContainer = document.createElement("div");
-    spinnerContainer.classList.add("d-flex", "justify-content-center");
+    spinnerContainer.classList.add("absolutePosition");
     const spinner = document.createElement("div");
-    spinner.classList.add("spinner-border", "spinner", "m-5");
+    spinner.classList.add("spinner-border", "spinnerSize");
     spinner.role = "status";
     const span = document.createElement("span");
     span.classList.add("visually-hidden");
     span.textContent = "Loading...";
     spinner.appendChild(span);
+    
     spinnerContainer.appendChild(spinner);
 
     return spinnerContainer;
 }
 
 export const hideSpinner = (container) =>{
-    const spinner = container.querySelector(".spinner");
-    //Si existe el componente spinner en el contenedor, lo elimina
+    //spinnerPosition es el contenedor de posición absoluta
+    const spinner = container.querySelector(".absolutePosition");
+    //Si existe el componente absolutePosition en el contenedor, lo elimina
     if (spinner) {
         spinner.remove();
     }

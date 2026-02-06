@@ -1,5 +1,4 @@
 
-
 export const getCurrentWeather = (location, language) =>{
     const request = fetch(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${location}&lang=${language}`);
     const response = request.then((res) =>{
@@ -7,7 +6,7 @@ export const getCurrentWeather = (location, language) =>{
     }).then((res) =>{
         if (res.error) {
             if (res.error.code === 1006) {
-                throw new Error("No se encontró la ubicación ingresada");
+                throw new Error(`La ubicación ${location} no se encontró`);
             }else{
                 throw new Error("No se pudo obtener los datos del clima");
             }

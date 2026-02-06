@@ -2,26 +2,34 @@ import { getCityName } from "./src/UI/searchBarUI.js";
 import { getCurrentWeather, getForecast } from "./src/services/weatherService.js";
 import { renderCityInformation, renderCurrentWeatherInformation } from "./src/UI/weatherInformationCard.js";
 import { showSpinner, hideSpinner } from "./src/UI/spinnerUI.js";
+import { showErrorAlert, clearErrorAlert } from "./src/UI/feedback.js";
 
 const currentWeatherContainer = document.getElementById("currentWeatherContainer");
+const forecastContainer = document.getElementById("forecastContainer");
 
 document.addEventListener("DOMContentLoaded", () => {
-    getWeatherInformation("San Salvador");
+    getCurrentWeatherInformation("San Salvador");
+    getForescastInformation("San Salvador")
 });
 
-const getWeatherInformation = (city) =>{
-    //TODO: Arreglar el spinner, que tape la info, se anexa abajo del texto, que se sobreponga, replace no sale a cuento, quiza crear una capa con absolute donde aparezca el spinner y difuminar el fondo, representando que está cargando
+const getCurrentWeatherInformation = (city) =>{
     showSpinner(currentWeatherContainer);
     //San Salvador es por defecto, 
     getCurrentWeather(city, "es")
         .then((res) => {
+            clearErrorAlert(currentWeatherContainer);
             renderCityInformation(res);
-            renderCurrentWeatherInformation(res)
-            console.log(res)
+            renderCurrentWeatherInformation(res);
+        })
+        .catch((error) =>{
+            showErrorAlert(currentWeatherContainer,error.message);
         })
         .finally(()=>{
             hideSpinner(currentWeatherContainer);
         })
+}
+const getForescastInformation = (city) =>{
+
 }
 
 const handlerCitySearch = (cityName) =>{

@@ -31,10 +31,10 @@
                 <span class="icon material-symbols-outlined">
                     location_on
                 </span>
-                <h5 id="cityCountryName">San Salvador, El Salvador</h5>
+                <h5 id="cityCountryName"></h5>
             </div>
             <div id="dateContainer" class="dateInformation">
-                <p id="date">Domingo, 01 de febrero de 2026</p>
+                <p id="date"></p>
             </div>
         </section>
         <section id="currentWeatherContainer" class="currentWeatherCard">
@@ -58,11 +58,11 @@
             <div class="currentWeatherInfo">
                 <div id="temperatureContainer" class="temperatureContainer">
                     <img src="src/assets/sunny.png" alt="Clima">
-                    <h2>17 °C</h2>
+                    <h2> °C</h2>
                 </div>
                 <div id="weatherConditionContainer" class="weatherConditionContainer">
-                    <h5>Sunny</h5>
-                    <p>Sensación térmica: 16°C</p>
+                    <h5></h5>
+                    <p>Sensación térmica: °C</p>
                 </div>
             </div>
             <section id="weatherDetailsContaier" class="weatherDetailsContaier">
@@ -70,24 +70,30 @@
                     <span class="material-symbols-outlined conditionIcon">
                     humidity_low
                     </span>
-                    <span id="humidity">41%</span>
+                    <span id="humidity">%</span>
                     <span>Húmedad</span>
                 </div>
                 <div id="windContainer" class="weatherDetailCard">
                     <span class="conditionIcon material-symbols-outlined">
                     air
                     </span>
-                    <span id="wind">11.5 kp/h</span>
+                    <span id="wind"> km/h</span>
                     <span>Viento</span>
                 </div>
                 <div id="precipitationContainer" class="weatherDetailCard">
                     <span class="conditionIcon material-symbols-outlined">
                     rainy
                     </span>
-                    <span id="precipitation">0%</span>
+                    <span id="precipitation">%</span>
                     <span>Precipitaciones</span>
                 </div>
             </section>
+            <!-- <div class="spinnerPosition">
+                <div class="spinner-border spinnerSize" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div> -->
+            
         </section>
         <h4 class="title">Pronóstico</h4>
         <section id="forecastContainer" class="forecastContainer">
@@ -110,7 +116,6 @@
                 <p>26°/12°</p>
             </div>
         </section>
-        
     </main>
     <script type="module" src="main.js"></script>
 </body>
