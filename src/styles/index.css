@@ -157,6 +157,7 @@ estiliza el .slider que viene inmediatamente después*/
     justify-content: space-between;
     width: 90%;
     padding: 1rem;
+    gap: 2rem;
 }
 /*Boton de accion para mostrar las opciones de unidades para la temperatura*/
 .btnShowTemperatureUnitsOptions{

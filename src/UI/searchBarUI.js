@@ -5,7 +5,10 @@ export const getCityName = (onCitySearch) =>{
         if (e.key == "Enter") {
             //Cuando el usuario de un enter se envía el texto a la función callback
             onCitySearch(e.target.value);
+            //Limpia la barra de busqueda
+            searchBar.value = "";
         }
+        
     })
     
 }
