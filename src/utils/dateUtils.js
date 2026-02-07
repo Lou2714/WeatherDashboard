@@ -11,6 +11,10 @@ export const getCurrentDate = () =>{
 
 export const getDayFromADate = (dateString) =>{
     //Creando un objeto date a partir de un string
-    const date = new Date(dateString);
-
+    const date = new Date(`${dateString}T12:00:00`);
+    const options = {
+        weekday: "long"
+    };
+    const dateDay = date.toLocaleDateString("es-ES", options);
+    return dateDay;
 }

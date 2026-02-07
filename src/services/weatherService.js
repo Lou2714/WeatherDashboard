@@ -22,15 +22,13 @@ export const getForecast = (location, language) =>{
     const response = request.then((res) =>{
         return res.json();
     }).then((res) =>{
-        if (condition) {
-            if (res.error) {
+        if (res.error) {
                 if (res.error.code === 1006) {
                     throw new Error("No es posible mostrar un pronóstico del clima");
                 }else{
                     throw new Error("No se pudo obtener el pronóstico");
                 }
             }
-        }
         return res;
     })
     return response;

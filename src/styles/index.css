@@ -243,6 +243,7 @@ estiliza el .slider que viene inmediatamente después*/
 }
 /*Forecast card container*/
 .forecastContainer{
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -256,6 +257,8 @@ estiliza el .slider que viene inmediatamente después*/
     padding: 0.5rem;
     transition: all 0.5s ease;
     cursor: pointer;
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
 }
 .title{
     text-align: center; 
