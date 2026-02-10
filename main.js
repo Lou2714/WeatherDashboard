@@ -4,16 +4,22 @@ import { renderCityInformation, renderCurrentWeatherInformation } from "./src/UI
 import { showSpinner, hideSpinner } from "./src/UI/spinnerUI.js";
 import { showErrorAlert, clearErrorAlert } from "./src/UI/feedback.js";
 import { renderForecastInformation } from "./src/UI/forecastCardUI.js";
-import { openTemperatureMenu, closeTemperatureMenu } from "./src/UI/temperatureMenuUI.js";
+import { openTemperatureMenu, closeTemperatureMenu, getTemperatureUnitInputValue } from "./src/UI/temperatureMenuUI.js";
+import { saveTemperatureUnitChecked, getTemperatureUnit } from "./src/utils/storage.js";
 
 const currentWeatherContainer = document.getElementById("currentWeatherContainer");
 const forecastContainer = document.getElementById("forecastContainer");
 const btnShowTemperatureUnitsOptions = document.getElementById("btnShowTemperatureUnitsOptions");
 const temperatureUnitOptionsContainer = document.getElementById("temperatureUnitOptionsContainer");
 
+const cityTemperatureState = {
+    currentCity: "san salvador",
+    currentTemperatureUnit: getTemperatureUnit() || "celsius"
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    getCurrentWeatherInformation("San Salvador");
-    getForescastInformation("San Salvador");
+    loadWeatherInformation();
+    
 });
 btnShowTemperatureUnitsOptions.addEventListener("click", () =>{  
     //Verifico si el menu de unidades ya está abierto o no, la clase me lo indica  
@@ -24,20 +30,27 @@ btnShowTemperatureUnitsOptions.addEventListener("click", () =>{
     }
 })
 document.addEventListener("click", (e) =>{
-    //Si es true, es porque está abierto el menú
+    //SI el click NO está dentro del menú Y el click NO está dentro del botón → entonces cerrar el menú
     if (!temperatureUnitOptionsContainer.contains(e.target) &&  !btnShowTemperatureUnitsOptions.contains(e.target) ) {
         closeTemperatureMenu(temperatureUnitOptionsContainer);
     }
     
 })
-const getCurrentWeatherInformation = (city) =>{
+
+const loadWeatherInformation = () =>{
+    const { currentCity, currentTemperatureUnit } = cityTemperatureState;
+    getCurrentWeatherInformation(currentCity, currentTemperatureUnit);
+    getForescastInformation(currentCity, currentTemperatureUnit);
+}
+
+const getCurrentWeatherInformation = (city, temperatureUnit) =>{
     showSpinner(currentWeatherContainer);
     //San Salvador es por defecto, 
     getCurrentWeather(city, "es")
         .then((res) => {
             clearErrorAlert(currentWeatherContainer);
             renderCityInformation(res);
-            renderCurrentWeatherInformation(res);
+            renderCurrentWeatherInformation(res, temperatureUnit);
         })
         .catch((error) =>{
             showErrorAlert(currentWeatherContainer,error.message);
@@ -46,12 +59,12 @@ const getCurrentWeatherInformation = (city) =>{
             hideSpinner(currentWeatherContainer);
         })
 }
-const getForescastInformation = (city) =>{
+const getForescastInformation = (city, temperatureUnit) =>{
     showSpinner(forecastContainer);
     getForecast(city,"es")
         .then((res) => {
             clearErrorAlert(forecastContainer);
-            renderForecastInformation(res.forecast, forecastContainer);
+            renderForecastInformation(res.forecast, forecastContainer, temperatureUnit);
         })
         .catch((error) => {
             showErrorAlert(forecastContainer, error.message);
@@ -62,9 +75,17 @@ const getForescastInformation = (city) =>{
 }
 
 const handlerCitySearch = (cityName) =>{
-    //Cuando el usuario busque una ciudad se debe de ir a getWeatherInfo para que carge
-    getCurrentWeatherInformation(cityName);
-    getForescastInformation(cityName);
+    //Cuando el usuario busque una ciudad se actualiza el valor del estado y se carga la info del clima
+    cityTemperatureState.currentCity = cityName;
+    loadWeatherInformation();
+}
+//Función para guardar la unidad de temperatura en el localStorage cada que cambie
+const handlerTemperatureUnitChange = (temperatureUnit) =>{
+    cityTemperatureState.currentTemperatureUnit = temperatureUnit;
+    saveTemperatureUnitChecked(temperatureUnit);
+    loadWeatherInformation();
 }
 //Callback para manejar el texto del searchbar, lo pongo aqui por la inicialización
 getCityName(handlerCitySearch);
+//Callback para obtener el valor de la unidad de temperatura
+getTemperatureUnitInputValue(handlerTemperatureUnitChange);

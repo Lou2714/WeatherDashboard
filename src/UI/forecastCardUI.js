@@ -1,6 +1,6 @@
 import { getDayFromADate } from "../utils/dateUtils.js";
 
-const createForecastCard = (forecastDay) =>{
+const createForecastCard = (forecastDay, temperatureUnit) =>{
     const div = document.createElement("div");
     div.classList.add("forecastCard");
     const day = document.createElement("h5");
@@ -15,17 +15,21 @@ const createForecastCard = (forecastDay) =>{
     img.alt = "Clima"
     div.appendChild(img);
     const temperature = document.createElement("p");
-    temperature.textContent = `${forecastDay.day.maxtemp_c}°/${forecastDay.day.mintemp_c}°`;
+    if (temperatureUnit == "celsius") {
+        temperature.textContent = `${forecastDay.day.maxtemp_c}°/${forecastDay.day.mintemp_c}°`;
+    }else{
+        temperature.textContent = `${forecastDay.day.maxtemp_f}°/${forecastDay.day.mintemp_f}°`
+    }
     div.appendChild(temperature);
 
     return div;
 }
 
-export const renderForecastInformation = (forecast, container) =>{
+export const renderForecastInformation = (forecast, container, temperatureUnit) =>{
     const forecastArray = forecast.forecastday;
     container.replaceChildren();
     forecastArray.forEach((day) =>{
-        const forecastDay = createForecastCard(day);
+        const forecastDay = createForecastCard(day, temperatureUnit);
         container.appendChild(forecastDay);
     })
     
