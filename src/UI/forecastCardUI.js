@@ -21,12 +21,10 @@ const createForecastCard = (forecastDay) =>{
     return div;
 }
 
-//Pendiente función para renderizar las forecastCards
 export const renderForecastInformation = (forecast, container) =>{
     const forecastArray = forecast.forecastday;
     container.replaceChildren();
     forecastArray.forEach((day) =>{
-        console.log(day);
         const forecastDay = createForecastCard(day);
         container.appendChild(forecastDay);
     })

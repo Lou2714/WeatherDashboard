@@ -8,7 +8,7 @@ export const renderCityInformation = (location) =>{
     date.textContent = getCurrentDate();
 
 };
-//Pendiente abrir opciones de temperatura
+
 export const renderCurrentWeatherInformation = (current) =>{
     const temperatureContainer = document.getElementById("temperatureContainer");
     const temperatureH2 = temperatureContainer.querySelector("h2");

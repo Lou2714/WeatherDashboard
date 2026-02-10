@@ -4,15 +4,32 @@ import { renderCityInformation, renderCurrentWeatherInformation } from "./src/UI
 import { showSpinner, hideSpinner } from "./src/UI/spinnerUI.js";
 import { showErrorAlert, clearErrorAlert } from "./src/UI/feedback.js";
 import { renderForecastInformation } from "./src/UI/forecastCardUI.js";
+import { openTemperatureMenu, closeTemperatureMenu } from "./src/UI/temperatureMenuUI.js";
 
 const currentWeatherContainer = document.getElementById("currentWeatherContainer");
 const forecastContainer = document.getElementById("forecastContainer");
+const btnShowTemperatureUnitsOptions = document.getElementById("btnShowTemperatureUnitsOptions");
+const temperatureUnitOptionsContainer = document.getElementById("temperatureUnitOptionsContainer");
 
 document.addEventListener("DOMContentLoaded", () => {
     getCurrentWeatherInformation("San Salvador");
-    getForescastInformation("San Salvador")
+    getForescastInformation("San Salvador");
 });
-
+btnShowTemperatureUnitsOptions.addEventListener("click", () =>{  
+    //Verifico si el menu de unidades ya está abierto o no, la clase me lo indica  
+    if (temperatureUnitOptionsContainer.classList.contains("showTemperatureUnitOptionsContainer")) {
+        closeTemperatureMenu(temperatureUnitOptionsContainer);
+    }else{
+        openTemperatureMenu(temperatureUnitOptionsContainer);
+    }
+})
+document.addEventListener("click", (e) =>{
+    //Si es true, es porque está abierto el menú
+    if (!temperatureUnitOptionsContainer.contains(e.target) &&  !btnShowTemperatureUnitsOptions.contains(e.target) ) {
+        closeTemperatureMenu(temperatureUnitOptionsContainer);
+    }
+    
+})
 const getCurrentWeatherInformation = (city) =>{
     showSpinner(currentWeatherContainer);
     //San Salvador es por defecto, 
